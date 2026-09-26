@@ -166,8 +166,9 @@ Return ONLY a valid raw JSON object (strictly NO markdown formatting, NO backtic
   "suggestedCondition": "INTACT" | "DAMAGED" | "STRIPPED"
 }`;
 
+          const model = (import.meta as any).env?.VITE_GEMINI_MODEL || 'gemini-2.0-flash';
           const res = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
